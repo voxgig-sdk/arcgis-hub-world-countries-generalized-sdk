@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "feature": {
+      "FEATURE00": {
+        "attribute": {},
+        "geometry": {}
+      },
+      "FEATURE01": {
+        "attribute": {},
+        "geometry": {}
+      },
+      "FEATURE02": {
+        "attribute": {},
+        "geometry": {}
+      }
+    }
+  },
+  "new": {
+    "feature": {
+      "feature_ref01": {
+        "attribute": {},
+        "geometry": {}
+      }
+    }
+  }
+}

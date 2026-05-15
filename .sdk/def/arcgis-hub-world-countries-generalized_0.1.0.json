@@ -1,0 +1,475 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ArcGIS Hub - World Countries Generalized",
+    "description": "The World Countries Generalized layer provides a simplified representation of global country boundaries, optimized for performance and visibility at broader scales (1:5,000,000 and beyond). Developed by Esri using data from Garmin International, the CIA World Factbook, and the National Geographic Society, this layer is updated annually to reflect changes in country names and significant borders. Ideal for applications requiring an authoritative, generalized world basemap.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "ArcGIS Hub Support",
+      "url": "https://hub.arcgis.com"
+    },
+    "termsOfService": "https://www.esri.com/en-us/legal/terms/full-master-agreement"
+  },
+  "servers": [
+    {
+      "url": "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer",
+      "description": "ArcGIS Feature Service endpoint"
+    }
+  ],
+  "paths": {
+    "/0/query": {
+      "get": {
+        "summary": "Query World Countries features",
+        "description": "Query and retrieve world country features from the generalized layer with filtering, spatial queries, and pagination support.",
+        "operationId": "queryCountries",
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "description": "SQL WHERE clause for filtering features (e.g., 'COUNTRY = \"United States\"')",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "1=1"
+            }
+          },
+          {
+            "name": "outFields",
+            "in": "query",
+            "description": "Comma-separated list of field names to return (use '*' for all fields)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "*"
+            }
+          },
+          {
+            "name": "returnGeometry",
+            "in": "query",
+            "description": "Whether to return geometry with the features",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "f",
+            "in": "query",
+            "description": "Response format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "geojson",
+                "pjson"
+              ],
+              "default": "json"
+            }
+          },
+          {
+            "name": "resultOffset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          },
+          {
+            "name": "resultRecordCount",
+            "in": "query",
+            "description": "Maximum number of records to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2000,
+              "default": 1000
+            }
+          },
+          {
+            "name": "orderByFields",
+            "in": "query",
+            "description": "Comma-separated list of fields to order by (e.g., 'COUNTRY ASC')",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "geometry",
+            "in": "query",
+            "description": "Geometry for spatial query (JSON format)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "geometryType",
+            "in": "query",
+            "description": "Type of geometry for spatial query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "esriGeometryPoint",
+                "esriGeometryPolyline",
+                "esriGeometryPolygon",
+                "esriGeometryEnvelope"
+              ]
+            }
+          },
+          {
+            "name": "spatialRel",
+            "in": "query",
+            "description": "Spatial relationship for geometry query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "esriSpatialRelIntersects",
+                "esriSpatialRelContains",
+                "esriSpatialRelCrosses",
+                "esriSpatialRelEnvelopeIntersects",
+                "esriSpatialRelOverlaps",
+                "esriSpatialRelTouches",
+                "esriSpatialRelWithin"
+              ],
+              "default": "esriSpatialRelIntersects"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful query response with country features",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "objectIdFieldName": {
+                      "type": "string",
+                      "example": "OBJECTID"
+                    },
+                    "globalIdFieldName": {
+                      "type": "string"
+                    },
+                    "geometryType": {
+                      "type": "string",
+                      "example": "esriGeometryPolygon"
+                    },
+                    "spatialReference": {
+                      "type": "object",
+                      "properties": {
+                        "wkid": {
+                          "type": "integer",
+                          "example": 4326
+                        },
+                        "latestWkid": {
+                          "type": "integer",
+                          "example": 4326
+                        }
+                      }
+                    },
+                    "features": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "attributes": {
+                            "type": "object",
+                            "properties": {
+                              "OBJECTID": {
+                                "type": "integer"
+                              },
+                              "COUNTRY": {
+                                "type": "string",
+                                "description": "Country name"
+                              },
+                              "ISO": {
+                                "type": "string",
+                                "description": "ISO country code"
+                              },
+                              "COUNTRYAFF": {
+                                "type": "string",
+                                "description": "Country affiliation"
+                              },
+                              "AFF_ISO": {
+                                "type": "string",
+                                "description": "Affiliation ISO code"
+                              },
+                              "SHAPE_AREA": {
+                                "type": "number",
+                                "description": "Area of the country polygon"
+                              },
+                              "SHAPE_LEN": {
+                                "type": "number",
+                                "description": "Perimeter length of the country polygon"
+                              }
+                            }
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "rings": {
+                                "type": "array",
+                                "items": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "number"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid query parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "details": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/0": {
+      "get": {
+        "summary": "Get layer metadata",
+        "description": "Retrieve metadata and service information about the World Countries Generalized layer, including field definitions, spatial reference, and extent.",
+        "operationId": "getLayerMetadata",
+        "tags": [
+          "Metadata"
+        ],
+        "parameters": [
+          {
+            "name": "f",
+            "in": "query",
+            "description": "Response format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "pjson"
+              ],
+              "default": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Layer metadata retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "currentVersion": {
+                      "type": "number",
+                      "example": 10.91
+                    },
+                    "id": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "World_Countries_Generalized"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "Feature Layer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "geometryType": {
+                      "type": "string",
+                      "example": "esriGeometryPolygon"
+                    },
+                    "copyrightText": {
+                      "type": "string"
+                    },
+                    "spatialReference": {
+                      "type": "object",
+                      "properties": {
+                        "wkid": {
+                          "type": "integer",
+                          "example": 4326
+                        },
+                        "latestWkid": {
+                          "type": "integer",
+                          "example": 4326
+                        }
+                      }
+                    },
+                    "fields": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "alias": {
+                            "type": "string"
+                          },
+                          "length": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "extent": {
+                      "type": "object",
+                      "properties": {
+                        "xmin": {
+                          "type": "number"
+                        },
+                        "ymin": {
+                          "type": "number"
+                        },
+                        "xmax": {
+                          "type": "number"
+                        },
+                        "ymax": {
+                          "type": "number"
+                        },
+                        "spatialReference": {
+                          "type": "object",
+                          "properties": {
+                            "wkid": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "capabilities": {
+                      "type": "string",
+                      "example": "Query"
+                    },
+                    "maxRecordCount": {
+                      "type": "integer",
+                      "example": 2000
+                    },
+                    "supportsStatistics": {
+                      "type": "boolean"
+                    },
+                    "supportsAdvancedQueries": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Features",
+      "description": "Query and retrieve world country features"
+    },
+    {
+      "name": "Metadata",
+      "description": "Layer metadata and service information"
+    }
+  ],
+  "externalDocs": {
+    "description": "ArcGIS Hub Dataset Page",
+    "url": "https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/about"
+  }
+}

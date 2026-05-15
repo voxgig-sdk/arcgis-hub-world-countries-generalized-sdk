@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "ArcGIS Hub Support"
+        url: "https://hub.arcgis.com"
+      }
+      description: "The World Countries Generalized layer provides a simplified representation of global country boundaries, optimized for performance and visibility at broader scales (1:5,000,000 and beyond). Developed by Esri using data from Garmin International, the CIA World Factbook, and the National Geographic Society, this layer is updated annually to reflect changes in country names and significant borders. Ideal for applications requiring an authoritative, generalized world basemap."
+      servers: [
+        {
+          description: "ArcGIS Feature Service endpoint"
+          url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer"
+        }
+      ]
+      termsOfService: "https://www.esri.com/en-us/legal/terms/full-master-agreement"
+      title: "ArcGIS Hub - World Countries Generalized"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

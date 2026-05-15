@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "metadata": {
+      "METADATA00": {
+        "alia": "s28",
+        "length": "s29",
+        "name": "s2a",
+        "type": "s2b"
+      },
+      "METADATA01": {
+        "alia": "s50",
+        "length": "s51",
+        "name": "s52",
+        "type": "s53"
+      },
+      "METADATA02": {
+        "alia": "s78",
+        "length": "s79",
+        "name": "s7a",
+        "type": "s7b"
+      }
+    }
+  },
+  "new": {
+    "metadata": {
+      "metadata_ref01": {
+        "alia": "sa0",
+        "length": "sa1",
+        "name": "sa2",
+        "type": "sa3"
+      }
+    }
+  }
+}

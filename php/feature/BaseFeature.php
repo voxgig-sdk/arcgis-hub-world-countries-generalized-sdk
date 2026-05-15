@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// ArcgisHubWorldCountriesGeneralized SDK base feature
+
+class ArcgisHubWorldCountriesGeneralizedBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(ArcgisHubWorldCountriesGeneralizedContext $ctx, array $options): void {}
+    public function PostConstruct(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PostConstructEntity(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function SetData(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function GetData(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function GetMatch(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function SetMatch(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PrePoint(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PreSpec(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PreRequest(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PreResponse(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PreResult(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PreDone(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+    public function PreUnexpected(ArcgisHubWorldCountriesGeneralizedContext $ctx): void {}
+}

@@ -1,0 +1,138 @@
+# Entity: feature
+
+main: kit: entity: feature: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "attribute"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "geometry"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "feature"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "json"
+                kind: "query"
+                name: "f"
+                orig: "f"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "geometry"
+                orig: "geometry"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "geometry_type"
+                orig: "geometry_type"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "order_by_field"
+                orig: "order_by_field"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "*"
+                kind: "query"
+                name: "out_field"
+                orig: "out_field"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "result_offset"
+                orig: "result_offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 1000
+                kind: "query"
+                name: "result_record_count"
+                orig: "result_record_count"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "return_geometry"
+                orig: "return_geometry"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: "esriSpatialRelIntersects"
+                kind: "query"
+                name: "spatial_rel"
+                orig: "spatial_rel"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "1=1"
+                kind: "query"
+                name: "where"
+                orig: "where"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/0/query"
+          parts: [
+            "0"
+            "query"
+          ]
+          select: {
+            exist: [
+              "f"
+              "geometry"
+              "geometry_type"
+              "order_by_field"
+              "out_field"
+              "result_offset"
+              "result_record_count"
+              "return_geometry"
+              "spatial_rel"
+              "where"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
