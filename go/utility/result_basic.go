@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/core"
+	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

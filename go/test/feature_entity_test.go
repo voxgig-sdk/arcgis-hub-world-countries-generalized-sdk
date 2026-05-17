@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk"
-	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/core"
+	sdk "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go"
+	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/utility/struct"
 )
 
 func TestFeatureEntity(t *testing.T) {

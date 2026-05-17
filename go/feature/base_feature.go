@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/core"
+	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/core"
 )
 
 type BaseFeature struct {

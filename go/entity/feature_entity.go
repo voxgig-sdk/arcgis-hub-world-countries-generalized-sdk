@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/core"
+	"github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/utility/struct"
 )
 
 type FeatureEntity struct {

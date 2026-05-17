@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk"
+	sdk "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go"
 )
 
 func TestExists(t *testing.T) {

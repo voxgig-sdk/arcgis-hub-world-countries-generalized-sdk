@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/core"
+import "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go/core"
 
 func prepareMethodUtil(ctx *core.Context) string {
 	opname := ctx.Op.Name

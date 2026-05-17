@@ -335,6 +335,9 @@
             },
             "rb": {
               "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
             }
           }
         }
@@ -394,6 +397,33 @@
         }
       },
       "target": {
+        "go-cli": {
+          "title": "Go CLI",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "arcgis-hub-world-countries-generalized"
+          },
+          "phase": {
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "deps": {},
+          "name": "go-cli",
+          "active": true
+        },
         "ts": {
           "title": "TypeScript",
           "ext": "ts",
@@ -434,14 +464,7 @@
             "name": "arcgis-hub-world-countries-generalized"
           },
           "srcfeature": false,
-          "deps": {
-            "github.com/voxgig/struct": {
-              "active": true,
-              "version": "v0.0.0",
-              "replace": "./utility/struct",
-              "kind": "prod"
-            }
-          },
+          "deps": {},
           "name": "go",
           "active": true
         },
@@ -529,15 +552,6 @@
     },
     "def": {
       "desc": ""
-    },
-    "api": {
-      "guide": {},
-      "entity": {}
     }
-  },
-  "name__orig": "arcgis-hub-world-countries-generalized",
-  "Name": "ArcgisHubWorldCountriesGeneralized",
-  "name_": "arcgis_hub_world_countries_generalized",
-  "name-": "arcgis-hub-world-countries-generalized",
-  "NAME": "ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED"
+  }
 }
