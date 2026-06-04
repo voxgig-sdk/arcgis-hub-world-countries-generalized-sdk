@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},

@@ -92,7 +92,6 @@ def _feature_basic_setup(extra):
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_FEATURE_ENTID": idmap,
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE": "FALSE",
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_EXPLAIN": "FALSE",
-        "ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _feature_basic_setup(extra):
     if env.get("ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"),
             },
             extra or {},
         ])

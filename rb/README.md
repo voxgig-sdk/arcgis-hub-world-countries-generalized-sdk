@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "ArcgisHubWorldCountriesGeneralized_sdk"
 
-client = ArcgisHubWorldCountriesGeneralizedSDK.new({
-  "apikey" => ENV["ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"],
-})
+client = ArcgisHubWorldCountriesGeneralizedSDK.new({})
 ```
 
 ### 2. List features
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_TEST_LIVE=TRUE
-ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

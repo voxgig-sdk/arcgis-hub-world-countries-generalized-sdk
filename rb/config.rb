@@ -15,9 +15,6 @@ module ArcgisHubWorldCountriesGeneralizedConfig
       },
       "options" => {
         "base" => "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
