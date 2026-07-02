@@ -119,6 +119,7 @@ func featureBasicSetup(extra map[string]any) *entityTestSetup {
 		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_FEATURE_ENTID": idmap,
 		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE":      "FALSE",
 		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_EXPLAIN":   "FALSE",
+		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_FEATURE_ENTID"])
@@ -129,6 +130,7 @@ func featureBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"],
 			},
 			extra,
 		})

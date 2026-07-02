@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_TEST_METADATA_ENTID': idmap,
     'ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_TEST_LIVE': 'FALSE',
     'ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_TEST_EXPLAIN': 'FALSE',
+    'ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_APIKEY': 'NONE',
   })
 
   idmap = env['ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_TEST_METADATA_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ArcgisHubWorldCountriesGeneralizedSDK(merge([
       {
+        apikey: env.ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_APIKEY,
       },
       extra
     ]))

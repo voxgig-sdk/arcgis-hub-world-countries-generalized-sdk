@@ -1,21 +1,8 @@
 # ArcgisHubWorldCountriesGeneralized SDK
 
-Simplified global country boundaries optimised for display at scales of 1:5,000,000 and broader
+ArcGIS Hub - World Countries Generalized client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About ArcGIS Hub - World Countries Generalized
-
-The **World Countries Generalized** layer is a hosted ArcGIS feature service published by [Esri](https://www.esri.com/) on ArcGIS Hub. It exposes a simplified, low-detail polygon representation of every country in the world, intended as a lightweight basemap or join layer for global visualisations.
-
-The geometry is generalised for performance at small scales (roughly 1:5,000,000 and broader), so it draws quickly even when the whole world is in view. Esri compiles the data from [Garmin International](https://www.garmin.com/), the [CIA World Factbook](https://www.cia.gov/the-world-factbook/), and the [National Geographic Society](https://www.nationalgeographic.org/), and refreshes it annually to track changes to country names and significant borders.
-
-What you typically get back:
-
-- Country polygon geometries returned as GeoJSON
-- Either a filtered subset (search by attribute) or the full global dataset in one request
-
-Operational notes: the service is reachable over HTTPS with CORS enabled, so it can be queried directly from a browser. Returning the entire world in a single call is noticeably slower than a targeted query — community monitoring reports average response times around 6 seconds for the full dataset versus under half a second for a filtered search.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install arcgis-hub-world-countries-generalized-sdk
 luarocks install arcgis-hub-world-countries-generalized-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ArcgisHubWorldCountriesGeneralizedSDK } from 'arcgis-hub-world-countries-generalized'
 
-const client = new ArcgisHubWorldCountriesGeneralizedSDK({})
+const client = new ArcgisHubWorldCountriesGeneralizedSDK({
+  apikey: process.env.ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY,
+})
 
 // List all features
 const features = await client.Feature().list()
+console.log(features.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Feature** | Country boundary polygons served as GeoJSON features; query a single country or retrieve the full world dataset from the FeatureServer layer. | `/0/query` |
-| **Metadata** | Service- and layer-level metadata describing the feature service, including field definitions, geometry type, and capabilities exposed by the ArcGIS REST endpoint. | `/0` |
+| **Feature** |  | `/0/query` |
+| **Metadata** |  | `/0` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from arcgishubworldcountriesgeneralized_sdk import ArcgisHubWorldCountriesGeneralizedSDK
 
-client = ArcgisHubWorldCountriesGeneralizedSDK({})
+client = ArcgisHubWorldCountriesGeneralizedSDK({
+    "apikey": os.environ.get("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
+})
 
 # List all features
-features, err = client.Feature(None).list(None, None)
+features, err = client.Feature().list()
+print(features)
 ```
 
 ### PHP
@@ -126,10 +119,13 @@ features, err = client.Feature(None).list(None, None)
 <?php
 require_once 'arcgishubworldcountriesgeneralized_sdk.php';
 
-$client = new ArcgisHubWorldCountriesGeneralizedSDK([]);
+$client = new ArcgisHubWorldCountriesGeneralizedSDK([
+    "apikey" => getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
+]);
 
 // List all features
-[$features, $err] = $client->Feature(null)->list(null, null);
+[$features, $err] = $client->Feature()->list();
+print_r($features);
 ```
 
 ### Golang
@@ -137,10 +133,13 @@ $client = new ArcgisHubWorldCountriesGeneralizedSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go"
 
-client := sdk.NewArcgisHubWorldCountriesGeneralizedSDK(map[string]any{})
+client := sdk.NewArcgisHubWorldCountriesGeneralizedSDK(map[string]any{
+    "apikey": os.Getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
+})
 
 // List all features
 features, err := client.Feature(nil).List(nil, nil)
+fmt.Println(features)
 ```
 
 ### Ruby
@@ -148,10 +147,13 @@ features, err := client.Feature(nil).List(nil, nil)
 ```ruby
 require_relative "ArcgisHubWorldCountriesGeneralized_sdk"
 
-client = ArcgisHubWorldCountriesGeneralizedSDK.new({})
+client = ArcgisHubWorldCountriesGeneralizedSDK.new({
+  "apikey" => ENV["ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"],
+})
 
 # List all features
-features, err = client.Feature(nil).list(nil, nil)
+features, err = client.Feature().list
+puts features
 ```
 
 ### Lua
@@ -159,10 +161,13 @@ features, err = client.Feature(nil).list(nil, nil)
 ```lua
 local sdk = require("arcgis-hub-world-countries-generalized_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
+})
 
 -- List all features
-local features, err = client:Feature(nil):list(nil, nil)
+local features, err = client:Feature():list()
+print(features)
 ```
 
 ## Unit testing in offline mode
@@ -181,25 +186,21 @@ const result = await client.Feature().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ArcgisHubWorldCountriesGeneralizedSDK.test(None, None)
-result, err = client.Feature(None).load(
-    {"id": "test01"}, None
-)
+client = ArcgisHubWorldCountriesGeneralizedSDK.test()
+result, err = client.Feature().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ArcgisHubWorldCountriesGeneralizedSDK::test(null, null);
-[$result, $err] = $client->Feature(null)->load(
-    ["id" => "test01"], null
-);
+$client = ArcgisHubWorldCountriesGeneralizedSDK::test();
+[$result, $err] = $client->Feature()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Feature(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -208,19 +209,15 @@ result, err := client.Feature(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArcgisHubWorldCountriesGeneralizedSDK.test(nil, nil)
-result, err = client.Feature(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ArcgisHubWorldCountriesGeneralizedSDK.test
+result, err = client.Feature().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Feature(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Feature():load({ id = "test01" })
 ```
 
 ## How it works
@@ -324,11 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the ArcGIS Hub - World Countries Generalized
-
-- Upstream: [https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer](https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer)
-- API docs: [https://freepublicapis.com/arcgis-hub-world-countries-generalized](https://freepublicapis.com/arcgis-hub-world-countries-generalized)
 
 ---
 

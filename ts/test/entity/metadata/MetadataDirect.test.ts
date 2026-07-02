@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_METADATA_ENTID': {},
     'ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE': 'FALSE',
+    'ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE
 
   if (live) {
     const client = new ArcgisHubWorldCountriesGeneralizedSDK({
+      apikey: env.ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY,
     })
 
     let idmap: any = env['ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_METADATA_ENTID']

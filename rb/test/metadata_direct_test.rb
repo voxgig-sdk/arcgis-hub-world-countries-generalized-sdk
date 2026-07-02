@@ -62,12 +62,14 @@ def metadata_direct_setup(mockres)
   env = Runner.env_override({
     "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_METADATA_ENTID" => {},
     "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE" => "FALSE",
+    "ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY" => "NONE",
   })
 
   live = env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"],
     }
     client = ArcgisHubWorldCountriesGeneralizedSDK.new(merged_opts)
     return {

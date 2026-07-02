@@ -18,24 +18,7 @@ main: {
       termsOfService: "https://www.esri.com/en-us/legal/terms/full-master-agreement"
       title: "ArcGIS Hub - World Countries Generalized"
       version: "1.0.0"
-      tagline: "Simplified global country boundaries optimised for display at scales of 1:5,000,000 and broader"
-      homepage: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer"
-      docs_url: "https://freepublicapis.com/arcgis-hub-world-countries-generalized"
-      about_md: `The **World Countries Generalized** layer is a hosted ArcGIS feature service published by [Esri](https://www.esri.com/) on ArcGIS Hub. It exposes a simplified, low-detail polygon representation of every country in the world, intended as a lightweight basemap or join layer for global visualisations.
-
-The geometry is generalised for performance at small scales (roughly 1:5,000,000 and broader), so it draws quickly even when the whole world is in view. Esri compiles the data from [Garmin International](https://www.garmin.com/), the [CIA World Factbook](https://www.cia.gov/the-world-factbook/), and the [National Geographic Society](https://www.nationalgeographic.org/), and refreshes it annually to track changes to country names and significant borders.
-
-What you typically get back:
-
-- Country polygon geometries returned as GeoJSON
-- Either a filtered subset (search by attribute) or the full global dataset in one request
-
-Operational notes: the service is reachable over HTTPS with CORS enabled, so it can be queried directly from a browser. Returning the entire world in a single call is noticeably slower than a targeted query — community monitoring reports average response times around 6 seconds for the full dataset versus under half a second for a filtered search.`
-      entity_desc: {
-        feature: "Country boundary polygons served as GeoJSON features; query a single country or retrieve the full world dataset from the FeatureServer layer."
-        metadata: "Service- and layer-level metadata describing the feature service, including field definitions, geometry type, and capabilities exposed by the ArcGIS REST endpoint."
-      }
-      auth: false
     }
   }
 }
+

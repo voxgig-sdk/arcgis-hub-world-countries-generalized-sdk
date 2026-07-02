@@ -93,12 +93,14 @@ func featureDirectSetup(mockres any) *featureDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_FEATURE_ENTID": map[string]any{},
 		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE":    "FALSE",
+		"ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY":       "NONE",
 	})
 
 	live := env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"],
 		}
 		client := sdk.NewArcgisHubWorldCountriesGeneralizedSDK(mergedOpts)
 

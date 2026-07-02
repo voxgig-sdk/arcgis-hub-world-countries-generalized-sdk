@@ -86,6 +86,7 @@ function metadata_basic_setup($extra)
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_METADATA_ENTID" => $idmap,
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE" => "FALSE",
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_EXPLAIN" => "FALSE",
+        "ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function metadata_basic_setup($extra)
     if ($env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"],
             ],
             $extra ?? [],
         ]);
