@@ -10,13 +10,13 @@ The Ruby SDK for the ArcgisHubWorldCountriesGeneralized API — an entity-orient
 
 ## Install
 ```bash
-gem install arcgis-hub-world-countries-generalized-sdk
+gem install voxgig-sdk-arcgis-hub-world-countries-generalized
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "arcgis-hub-world-countries-generalized-sdk"
+gem "voxgig-sdk-arcgis-hub-world-countries-generalized"
 ```
 
 Then run:

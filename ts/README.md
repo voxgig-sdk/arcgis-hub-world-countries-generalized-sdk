@@ -10,7 +10,7 @@ The TypeScript SDK for the ArcgisHubWorldCountriesGeneralized API — a type-saf
 
 ## Install
 ```bash
-npm install arcgis-hub-world-countries-generalized
+npm install @voxgig-sdk/arcgis-hub-world-countries-generalized
 ```
 ## Tutorial: your first API call
 

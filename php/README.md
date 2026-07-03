@@ -10,7 +10,7 @@ The PHP SDK for the ArcgisHubWorldCountriesGeneralized API — an entity-oriente
 
 ## Install
 ```bash
-composer require voxgig/arcgis-hub-world-countries-generalized-sdk
+composer require voxgig-sdk/arcgis-hub-world-countries-generalized
 ```
 
 

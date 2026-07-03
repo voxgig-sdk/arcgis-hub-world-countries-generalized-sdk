@@ -10,7 +10,7 @@ The Lua SDK for the ArcgisHubWorldCountriesGeneralized API — an entity-oriente
 
 ## Install
 ```bash
-luarocks install arcgis-hub-world-countries-generalized-sdk
+luarocks install voxgig-sdk-arcgis-hub-world-countries-generalized
 ```
 
 If the module is not yet published, add the source directory to

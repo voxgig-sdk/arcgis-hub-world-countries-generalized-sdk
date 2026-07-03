@@ -10,7 +10,7 @@ The Python SDK for the ArcgisHubWorldCountriesGeneralized API — an entity-orie
 
 ## Install
 ```bash
-pip install arcgis-hub-world-countries-generalized-sdk
+pip install voxgig-sdk-arcgis-hub-world-countries-generalized
 ```
 
 Or install from source:
