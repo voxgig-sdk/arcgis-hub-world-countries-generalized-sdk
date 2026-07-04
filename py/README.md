@@ -31,14 +31,16 @@ from arcgishubworldcountriesgeneralized_sdk import ArcgisHubWorldCountriesGenera
 client = ArcgisHubWorldCountriesGeneralizedSDK()
 ```
 
-### 2. List features
+### 2. List feature records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.feature.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    features = client.Feature().list({})
+    for feature in features:
+        print(feature)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ArcgisHubWorldCountriesGeneralizedSDK.test()
 
-result = client.feature.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+feature = client.Feature().load({"id": "test01"})
+# feature contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -235,7 +238,7 @@ API path: `/0`
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `feature = client.Feature()`
 
 #### Operations
 
@@ -252,14 +255,14 @@ Create an instance: `const feature = client.feature`
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```python
+features = client.Feature().list({})
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `metadata = client.Metadata()`
 
 #### Operations
 
@@ -278,8 +281,8 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: List
 
-```ts
-const metadatas = await client.metadata.list()
+```python
+metadatas = client.Metadata().list({})
 ```
 
 
@@ -353,7 +356,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-feature = client.feature
+feature = client.Feature()
 feature.load({"id": "example_id"})
 
 # feature.data_get() now returns the loaded feature data

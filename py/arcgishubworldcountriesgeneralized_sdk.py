@@ -220,41 +220,21 @@ class ArcgisHubWorldCountriesGeneralizedSDK:
         }
 
 
-    @property
-    def feature(self):
-        """Idiomatic facade: client.feature.list() / client.feature.load({"id": ...})."""
-        from entity.feature_entity import FeatureEntity
-        cached = getattr(self, "_feature", None)
-        if cached is None:
-            cached = FeatureEntity(self, None)
-            self._feature = cached
-        return cached
-
-    def Feature(self, data=None):
-        # Deprecated: use client.feature instead.
+    def Feature(self, data=None) -> "FeatureEntity":
+        """Entity factory: client.Feature().list({}) / client.Feature().load({"id": ...})."""
         from entity.feature_entity import FeatureEntity
         return FeatureEntity(self, data)
 
 
-    @property
-    def metadata(self):
-        """Idiomatic facade: client.metadata.list() / client.metadata.load({"id": ...})."""
-        from entity.metadata_entity import MetadataEntity
-        cached = getattr(self, "_metadata", None)
-        if cached is None:
-            cached = MetadataEntity(self, None)
-            self._metadata = cached
-        return cached
-
-    def Metadata(self, data=None):
-        # Deprecated: use client.metadata instead.
+    def Metadata(self, data=None) -> "MetadataEntity":
+        """Entity factory: client.Metadata().list({}) / client.Metadata().load({"id": ...})."""
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ArcgisHubWorldCountriesGeneralizedSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class ArcgisHubWorldCountriesGeneralizedSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.feature_entity import FeatureEntity
+    from entity.metadata_entity import MetadataEntity

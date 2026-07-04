@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:feature():list() / client:feature():load({ id = ... })
-function ArcgisHubWorldCountriesGeneralizedSDK:feature(data)
+-- Idiomatic facade: client:Feature():list() / client:Feature():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArcgisHubWorldCountriesGeneralizedSDK:Feature(data)
   local EntityMod = require("entity.feature_entity")
   if data == nil then
     if self._feature == nil then
@@ -256,15 +257,10 @@ function ArcgisHubWorldCountriesGeneralizedSDK:feature(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:feature() instead.
-function ArcgisHubWorldCountriesGeneralizedSDK:Feature(data)
-  local EntityMod = require("entity.feature_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:metadata():list() / client:metadata():load({ id = ... })
-function ArcgisHubWorldCountriesGeneralizedSDK:metadata(data)
+-- Idiomatic facade: client:Metadata():list() / client:Metadata():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArcgisHubWorldCountriesGeneralizedSDK:Metadata(data)
   local EntityMod = require("entity.metadata_entity")
   if data == nil then
     if self._metadata == nil then
@@ -272,12 +268,6 @@ function ArcgisHubWorldCountriesGeneralizedSDK:metadata(data)
     end
     return self._metadata
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:metadata() instead.
-function ArcgisHubWorldCountriesGeneralizedSDK:Metadata(data)
-  local EntityMod = require("entity.metadata_entity")
   return EntityMod.new(self, data)
 end
 

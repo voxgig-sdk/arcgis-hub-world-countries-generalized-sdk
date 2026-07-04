@@ -208,26 +208,14 @@ class ArcgisHubWorldCountriesGeneralizedSDK
   end
 
 
-  # Idiomatic facade: client.feature.list / client.feature.load({ "id" => ... })
-  def feature
-    require_relative 'entity/feature_entity'
-    @feature ||= FeatureEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.feature instead.
+  # Canonical facade: client.Feature.list / client.Feature.load({ "id" => ... })
   def Feature(data = nil)
     require_relative 'entity/feature_entity'
     FeatureEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.metadata.list / client.metadata.load({ "id" => ... })
-  def metadata
-    require_relative 'entity/metadata_entity'
-    @metadata ||= MetadataEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.metadata instead.
+  # Canonical facade: client.Metadata.list / client.Metadata.load({ "id" => ... })
   def Metadata(data = nil)
     require_relative 'entity/metadata_entity'
     MetadataEntity.new(self, data)

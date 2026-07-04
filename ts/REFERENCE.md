@@ -121,7 +121,7 @@ Alias for `ArcgisHubWorldCountriesGeneralizedSDK.test()`.
 ## FeatureEntity
 
 ```ts
-const feature = client.feature
+const feature = client.Feature()
 ```
 
 ### Fields
@@ -138,7 +138,7 @@ const feature = client.feature
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.feature.list()
+const results = await client.Feature().list()
 ```
 
 ### Common Methods
@@ -172,7 +172,7 @@ Return a copy of the entity options.
 ## MetadataEntity
 
 ```ts
-const metadata = client.metadata
+const metadata = client.Metadata()
 ```
 
 ### Fields
@@ -191,7 +191,7 @@ const metadata = client.metadata
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.metadata.list()
+const results = await client.Metadata().list()
 ```
 
 ### Common Methods

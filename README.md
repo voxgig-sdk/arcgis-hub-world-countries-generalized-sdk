@@ -26,9 +26,11 @@ import { ArcgisHubWorldCountriesGeneralizedSDK } from '@voxgig-sdk/arcgis-hub-wo
 
 const client = new ArcgisHubWorldCountriesGeneralizedSDK()
 
-// List all features
-const features = await client.feature.list()
-console.log(features.data)
+// List all features (returns Feature[])
+const features = await client.Feature().list()
+for (const feature of features) {
+  console.log(feature)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from arcgishubworldcountriesgeneralized_sdk import ArcgisHubWorldCountriesGenera
 
 client = ArcgisHubWorldCountriesGeneralizedSDK()
 
-# List all features
-features = client.feature.list()
-print(features)
+# List all features (returns a list, raises on error)
+features = client.Feature().list({})
+for feature in features:
+    print(feature)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'arcgishubworldcountriesgeneralized_sdk.php';
 
 $client = new ArcgisHubWorldCountriesGeneralizedSDK();
 
-// List all features (throws on error)
-$features = $client->feature()->list();
+// List all features (returns an array; throws on error)
+$features = $client->Feature()->list();
 print_r($features);
 ```
 
@@ -121,8 +124,8 @@ require_relative "ArcgisHubWorldCountriesGeneralized_sdk"
 
 client = ArcgisHubWorldCountriesGeneralizedSDK.new
 
-# List all features
-features = client.feature.list
+# List all features (returns an Array; raises on error)
+features = client.Feature.list
 puts features
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("arcgis-hub-world-countries-generalized_sdk")
 local client = sdk.new()
 
 -- List all features
-local features, err = client:feature():list()
+local features, err = client:Feature():list()
 print(features)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ArcgisHubWorldCountriesGeneralizedSDK.test()
-const result = await client.feature.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const feature = await client.Feature().load({ id: 'test01' })
+// feature is a bare Feature populated with mock data
+console.log(feature)
 ```
 
 ### Python
 
 ```python
 client = ArcgisHubWorldCountriesGeneralizedSDK.test()
-result = client.feature.load({"id": "test01"})
+feature = client.Feature().load({"id": "test01"})
+print(feature)
 ```
 
 ### PHP
 
 ```php
-$client = ArcgisHubWorldCountriesGeneralizedSDK::test();
-$result = $client->feature()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ArcgisHubWorldCountriesGeneralizedSDK::test([
+    "entity" => ["feature" => ["test01" => ["id" => "test01"]]],
+]);
+$feature = $client->Feature()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.Feature(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArcgisHubWorldCountriesGeneralizedSDK.test
-result = client.feature.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ArcgisHubWorldCountriesGeneralizedSDK.test({
+  "entity" => { "feature" => { "test01" => { "id" => "test01" } } },
+})
+feature = client.Feature.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:feature():load({ id = "test01" })
+local result, err = client:Feature():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

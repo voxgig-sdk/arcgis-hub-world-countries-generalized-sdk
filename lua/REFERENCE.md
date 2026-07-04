@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## FeatureEntity
 
 ```lua
-local feature = client:feature(nil)
+local feature = client:Feature(nil)
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ local feature = client:feature(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:feature():list()
+local results, err = client:Feature():list()
 ```
 
 ### Common Methods
@@ -140,7 +140,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```lua
-local metadata = client:metadata(nil)
+local metadata = client:Metadata(nil)
 ```
 
 ### Fields
@@ -159,7 +159,7 @@ local metadata = client:metadata(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:metadata():list()
+local results, err = client:Metadata():list()
 ```
 
 ### Common Methods

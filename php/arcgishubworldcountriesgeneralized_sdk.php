@@ -233,10 +233,10 @@ class ArcgisHubWorldCountriesGeneralizedSDK
 
     private $_feature = null;
 
-    // Idiomatic facade: $client->feature()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Feature() (PHP method
-    // names are case-insensitive).
-    public function feature($data = null)
+    // Canonical facade: $client->Feature()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->feature()
+    // resolves here too.
+    public function Feature($data = null)
     {
         require_once __DIR__ . '/entity/feature_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ArcgisHubWorldCountriesGeneralizedSDK
 
     private $_metadata = null;
 
-    // Idiomatic facade: $client->metadata()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Metadata() (PHP method
-    // names are case-insensitive).
-    public function metadata($data = null)
+    // Canonical facade: $client->Metadata()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->metadata()
+    // resolves here too.
+    public function Metadata($data = null)
     {
         require_once __DIR__ . '/entity/metadata_entity.php';
         if ($data === null) {

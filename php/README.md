@@ -29,18 +29,16 @@ require_once 'arcgishubworldcountriesgeneralized_sdk.php';
 $client = new ArcgisHubWorldCountriesGeneralizedSDK();
 ```
 
-### 2. List features
+### 2. List feature records
 
 ```php
 try {
-    $result = $client->feature()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Feature records — iterate directly.
+    $features = $client->Feature()->list();
+    foreach ($features as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ArcgisHubWorldCountriesGeneralizedSDK::test();
+$client = ArcgisHubWorldCountriesGeneralizedSDK::test([
+    "entity" => ["feature" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->feature()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$feature = $client->Feature()->load(["id" => "test01"]);
+print_r($feature);
 ```
 
 ### Use a custom fetch function
@@ -243,7 +245,7 @@ API path: `/0`
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `$feature = $client->Feature();`
 
 #### Operations
 
@@ -260,14 +262,15 @@ Create an instance: `const feature = client.feature`
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```php
+// list() returns an array of Feature records (throws on error).
+$features = $client->Feature()->list();
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `$metadata = $client->Metadata();`
 
 #### Operations
 
@@ -286,8 +289,9 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: List
 
-```ts
-const metadatas = await client.metadata.list()
+```php
+// list() returns an array of Metadata records (throws on error).
+$metadatas = $client->Metadata()->list();
 ```
 
 
@@ -362,7 +366,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$feature = $client->feature();
+$feature = $client->Feature();
 $feature->load(["id" => "example_id"]);
 
 // $feature->dataGet() now returns the loaded feature data

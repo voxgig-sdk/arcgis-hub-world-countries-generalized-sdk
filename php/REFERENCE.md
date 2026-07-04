@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## FeatureEntity
 
 ```php
-$feature = $client->feature();
+$feature = $client->Feature();
 ```
 
 ### Fields
@@ -106,7 +106,7 @@ $feature = $client->feature();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->feature()->list([]);
+$results = $client->Feature()->list([]);
 ```
 
 ### Common Methods
@@ -142,7 +142,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```php
-$metadata = $client->metadata();
+$metadata = $client->Metadata();
 ```
 
 ### Fields
@@ -161,7 +161,7 @@ $metadata = $client->metadata();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->metadata()->list([]);
+$results = $client->Metadata()->list([]);
 ```
 
 ### Common Methods

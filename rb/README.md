@@ -28,16 +28,14 @@ require_relative "ArcgisHubWorldCountriesGeneralized_sdk"
 client = ArcgisHubWorldCountriesGeneralizedSDK.new
 ```
 
-### 2. List features
+### 2. List feature records
 
 ```ruby
 begin
-  result = client.feature.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Feature records — iterate directly.
+  features = client.Feature.list
+  features.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ArcgisHubWorldCountriesGeneralizedSDK.test
+client = ArcgisHubWorldCountriesGeneralizedSDK.test({
+  "entity" => { "feature" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.feature.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+feature = client.Feature.load({ "id" => "test01" })
+puts feature
 ```
 
 ### Use a custom fetch function
@@ -238,7 +240,7 @@ API path: `/0`
 
 ### Feature
 
-Create an instance: `const feature = client.feature`
+Create an instance: `feature = client.Feature`
 
 #### Operations
 
@@ -255,14 +257,15 @@ Create an instance: `const feature = client.feature`
 
 #### Example: List
 
-```ts
-const features = await client.feature.list()
+```ruby
+# list returns an Array of Feature records (raises on error).
+features = client.Feature.list
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `metadata = client.Metadata`
 
 #### Operations
 
@@ -281,8 +284,9 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: List
 
-```ts
-const metadatas = await client.metadata.list()
+```ruby
+# list returns an Array of Metadata records (raises on error).
+metadatas = client.Metadata.list
 ```
 
 
@@ -357,7 +361,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-feature = client.feature
+feature = client.Feature
 feature.load({ "id" => "example_id" })
 
 # feature.data_get now returns the loaded feature data
