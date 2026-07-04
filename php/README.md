@@ -9,9 +9,10 @@ The PHP SDK for the ArcgisHubWorldCountriesGeneralized API — an entity-oriente
 
 
 ## Install
-```bash
-composer require voxgig-sdk/arcgis-hub-world-countries-generalized
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases](https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,22 +26,22 @@ loading a specific record.
 <?php
 require_once 'arcgishubworldcountriesgeneralized_sdk.php';
 
-$client = new ArcgisHubWorldCountriesGeneralizedSDK([
-    "apikey" => getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
-]);
+$client = new ArcgisHubWorldCountriesGeneralizedSDK();
 ```
 
 ### 2. List features
 
 ```php
-[$result, $err] = $client->Feature()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->feature()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
@@ -52,28 +53,31 @@ if (is_array($result)) {
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -87,7 +91,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ArcgisHubWorldCountriesGeneralizedSDK::test();
 
-[$result, $err] = $client->ArcgisHubWorldCountriesGeneralized()->load(["id" => "test01"]);
+$result = $client->feature()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -121,8 +125,7 @@ $client = new ArcgisHubWorldCountriesGeneralizedSDK([
 Create a `.env.local` file at the project root:
 
 ```
-ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_TEST_LIVE=TRUE
-ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY=<your-key>
+ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -145,7 +148,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -192,8 +194,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -237,7 +243,7 @@ API path: `/0`
 
 ### Feature
 
-Create an instance: `const feature = client.Feature()`
+Create an instance: `const feature = client.feature`
 
 #### Operations
 
@@ -255,13 +261,13 @@ Create an instance: `const feature = client.Feature()`
 #### Example: List
 
 ```ts
-const features = await client.Feature().list()
+const features = await client.feature.list()
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.Metadata()`
+Create an instance: `const metadata = client.metadata`
 
 #### Operations
 
@@ -281,7 +287,7 @@ Create an instance: `const metadata = client.Metadata()`
 #### Example: List
 
 ```ts
-const metadatas = await client.Metadata().list()
+const metadatas = await client.metadata.list()
 ```
 
 
@@ -356,11 +362,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$feature = $client->feature();
+$feature->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $feature->dataGet() now returns the loaded feature data
+// $feature->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

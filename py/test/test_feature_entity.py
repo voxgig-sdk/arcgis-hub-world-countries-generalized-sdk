@@ -50,8 +50,7 @@ class TestFeatureEntity:
         feature_ref01_ent = client.Feature(None)
         feature_ref01_match = {}
 
-        feature_ref01_list_result, err = feature_ref01_ent.list(feature_ref01_match, None)
-        assert err is None
+        feature_ref01_list_result = feature_ref01_ent.list(feature_ref01_match, None)
         assert isinstance(feature_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _feature_basic_setup(extra):
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_FEATURE_ENTID": idmap,
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE": "FALSE",
         "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_EXPLAIN": "FALSE",
-        "ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _feature_basic_setup(extra):
     if env.get("ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"),
             },
             extra or {},
         ])

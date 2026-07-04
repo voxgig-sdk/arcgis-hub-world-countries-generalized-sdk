@@ -10,26 +10,24 @@ This is an unofficial SDK for the ArcGIS Hub - World Countries Generalized publi
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/arcgis-hub-world-countries-generalized` | `npm install @voxgig-sdk/arcgis-hub-world-countries-generalized` |
-| Python | `voxgig-sdk-arcgis-hub-world-countries-generalized` | `pip install voxgig-sdk-arcgis-hub-world-countries-generalized` |
-| PHP | `voxgig-sdk/arcgis-hub-world-countries-generalized` | `composer require voxgig-sdk/arcgis-hub-world-countries-generalized` |
-| Golang | `github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go` | `go get github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go` |
-| Ruby | `voxgig-sdk-arcgis-hub-world-countries-generalized` | `gem install voxgig-sdk-arcgis-hub-world-countries-generalized` |
-| Lua | `voxgig-sdk-arcgis-hub-world-countries-generalized` | `luarocks install voxgig-sdk-arcgis-hub-world-countries-generalized` |
+| TypeScript | `@voxgig-sdk/arcgis-hub-world-countries-generalized` | publish pending — [install from git tag](https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases) |
+| Python | `voxgig-sdk-arcgis-hub-world-countries-generalized` | publish pending — [install from git tag](https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases) |
+| PHP | `voxgig-sdk/arcgis-hub-world-countries-generalized` | publish pending — [install from git tag](https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go` | `go get github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go@latest` |
+| Ruby | `voxgig-sdk-arcgis-hub-world-countries-generalized` | publish pending — [install from git tag](https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases) |
+| Lua | `voxgig-sdk-arcgis-hub-world-countries-generalized` | publish pending — [install from git tag](https://github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { ArcgisHubWorldCountriesGeneralizedSDK } from 'arcgis-hub-world-countries-generalized'
+import { ArcgisHubWorldCountriesGeneralizedSDK } from '@voxgig-sdk/arcgis-hub-world-countries-generalized'
 
-const client = new ArcgisHubWorldCountriesGeneralizedSDK({
-  apikey: process.env.ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY,
-})
+const client = new ArcgisHubWorldCountriesGeneralizedSDK()
 
 // List all features
-const features = await client.Feature().list()
+const features = await client.feature.list()
 console.log(features.data)
 ```
 
@@ -71,8 +69,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Feature** |  | `/0/query` |
-| **Metadata** |  | `/0` |
+| **Feature** | The Feature entity (list). | `/0/query` |
+| **Metadata** | The Metadata entity (list). | `/0` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -82,15 +80,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from arcgishubworldcountriesgeneralized_sdk import ArcgisHubWorldCountriesGeneralizedSDK
 
-client = ArcgisHubWorldCountriesGeneralizedSDK({
-    "apikey": os.environ.get("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
-})
+client = ArcgisHubWorldCountriesGeneralizedSDK()
 
 # List all features
-features, err = client.Feature().list()
+features = client.feature.list()
 print(features)
 ```
 
@@ -100,12 +95,10 @@ print(features)
 <?php
 require_once 'arcgishubworldcountriesgeneralized_sdk.php';
 
-$client = new ArcgisHubWorldCountriesGeneralizedSDK([
-    "apikey" => getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
-]);
+$client = new ArcgisHubWorldCountriesGeneralizedSDK();
 
-// List all features
-[$features, $err] = $client->Feature()->list();
+// List all features (throws on error)
+$features = $client->feature()->list();
 print_r($features);
 ```
 
@@ -114,9 +107,7 @@ print_r($features);
 ```go
 import sdk "github.com/voxgig-sdk/arcgis-hub-world-countries-generalized-sdk/go"
 
-client := sdk.NewArcgisHubWorldCountriesGeneralizedSDK(map[string]any{
-    "apikey": os.Getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
-})
+client := sdk.New()
 
 // List all features
 features, err := client.Feature(nil).List(nil, nil)
@@ -128,12 +119,10 @@ fmt.Println(features)
 ```ruby
 require_relative "ArcgisHubWorldCountriesGeneralized_sdk"
 
-client = ArcgisHubWorldCountriesGeneralizedSDK.new({
-  "apikey" => ENV["ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"],
-})
+client = ArcgisHubWorldCountriesGeneralizedSDK.new
 
 # List all features
-features, err = client.Feature().list
+features = client.feature.list
 puts features
 ```
 
@@ -142,12 +131,10 @@ puts features
 ```lua
 local sdk = require("arcgis-hub-world-countries-generalized_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("ARCGIS-HUB-WORLD-COUNTRIES-GENERALIZED_APIKEY"),
-})
+local client = sdk.new()
 
 -- List all features
-local features, err = client:Feature():list()
+local features, err = client:feature():list()
 print(features)
 ```
 
@@ -160,7 +147,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ArcgisHubWorldCountriesGeneralizedSDK.test()
-const result = await client.Feature().load({ id: 'test01' })
+const result = await client.feature.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -168,14 +155,14 @@ const result = await client.Feature().load({ id: 'test01' })
 
 ```python
 client = ArcgisHubWorldCountriesGeneralizedSDK.test()
-result, err = client.Feature().load({"id": "test01"})
+result = client.feature.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = ArcgisHubWorldCountriesGeneralizedSDK::test();
-[$result, $err] = $client->Feature()->load(["id" => "test01"]);
+$result = $client->feature()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -191,14 +178,14 @@ result, err := client.Feature(nil).Load(
 
 ```ruby
 client = ArcgisHubWorldCountriesGeneralizedSDK.test
-result, err = client.Feature().load({ "id" => "test01" })
+result = client.feature.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Feature():load({ id = "test01" })
+local result, err = client:feature():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,7 +238,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -260,7 +247,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -278,7 +265,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `ArcgisHubWorldCountriesGeneralizedSDK.test()`.
 ## FeatureEntity
 
 ```ts
-const feature = client.Feature()
+const feature = client.feature
 ```
 
 ### Fields
@@ -139,7 +138,7 @@ const feature = client.Feature()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Feature().list()
+const results = await client.feature.list()
 ```
 
 ### Common Methods
@@ -173,7 +172,7 @@ Return a copy of the entity options.
 ## MetadataEntity
 
 ```ts
-const metadata = client.Metadata()
+const metadata = client.metadata
 ```
 
 ### Fields
@@ -192,7 +191,7 @@ const metadata = client.Metadata()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Metadata().list()
+const results = await client.metadata.list()
 ```
 
 ### Common Methods

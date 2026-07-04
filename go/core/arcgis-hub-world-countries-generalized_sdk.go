@@ -245,11 +245,17 @@ func (sdk *ArcgisHubWorldCountriesGeneralizedSDK) Direct(fetchargs map[string]an
 }
 
 
+// Feature returns a Feature entity bound to this client.
+// Idiomatic usage: client.Feature(nil).List(nil, nil) or
+// client.Feature(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArcgisHubWorldCountriesGeneralizedSDK) Feature(data map[string]any) ArcgisHubWorldCountriesGeneralizedEntity {
 	return NewFeatureEntityFunc(sdk, data)
 }
 
 
+// Metadata returns a Metadata entity bound to this client.
+// Idiomatic usage: client.Metadata(nil).List(nil, nil) or
+// client.Metadata(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArcgisHubWorldCountriesGeneralizedSDK) Metadata(data map[string]any) ArcgisHubWorldCountriesGeneralizedEntity {
 	return NewMetadataEntityFunc(sdk, data)
 }

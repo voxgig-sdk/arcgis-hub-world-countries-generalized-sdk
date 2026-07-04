@@ -3,6 +3,8 @@
 import { FeatureEntity } from './entity/FeatureEntity'
 import { MetadataEntity } from './entity/MetadataEntity'
 
+export type * from './ArcgisHubWorldCountriesGeneralizedTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class ArcgisHubWorldCountriesGeneralizedSDK {
 
 
 
+  _feature?: FeatureEntity
+
+  // Idiomatic facade: `client.feature.list()` / `client.feature.load({ id })`.
+  get feature(): FeatureEntity {
+    return (this._feature ??= new FeatureEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.feature` instead. */
   Feature(data?: any) {
     const self = this
     return new FeatureEntity(self,data)
   }
 
 
+  _metadata?: MetadataEntity
+
+  // Idiomatic facade: `client.metadata.list()` / `client.metadata.load({ id })`.
+  get metadata(): MetadataEntity {
+    return (this._metadata ??= new MetadataEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.metadata` instead. */
   Metadata(data?: any) {
     const self = this
     return new MetadataEntity(self,data)

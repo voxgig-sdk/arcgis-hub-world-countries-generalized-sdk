@@ -43,8 +43,7 @@ class FeatureEntityTest < Minitest::Test
     feature_ref01_ent = client.Feature(nil)
     feature_ref01_match = {}
 
-    feature_ref01_list_result, err = feature_ref01_ent.list(feature_ref01_match, nil)
-    assert_nil err
+    feature_ref01_list_result = feature_ref01_ent.list(feature_ref01_match, nil)
     assert feature_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def feature_basic_setup(extra)
     "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_FEATURE_ENTID" => idmap,
     "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE" => "FALSE",
     "ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_EXPLAIN" => "FALSE",
-    "ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def feature_basic_setup(extra)
   if env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARCGISHUBWORLDCOUNTRIESGENERALIZED_APIKEY"],
       },
       extra || {},
     ])

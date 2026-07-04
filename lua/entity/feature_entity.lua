@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch FeatureListMatch
+---@param ctrl? table
+---@return Feature[]
+---@return string? err
 function FeatureEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

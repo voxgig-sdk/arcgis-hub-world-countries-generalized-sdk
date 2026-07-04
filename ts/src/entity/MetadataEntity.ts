@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Metadata,
+  MetadataListMatch,
+} from '../ArcgisHubWorldCountriesGeneralizedTypes'
 
 // TODO: needs Entity superclass
-class MetadataEntity extends ArcgisHubWorldCountriesGeneralizedEntityBase {
+class MetadataEntity extends ArcgisHubWorldCountriesGeneralizedEntityBase<Metadata> {
 
   constructor(client: ArcgisHubWorldCountriesGeneralizedSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class MetadataEntity extends ArcgisHubWorldCountriesGeneralizedEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: MetadataListMatch, ctrl?: Control): Promise<Metadata[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class MetadataEntity extends ArcgisHubWorldCountriesGeneralizedEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Metadata[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
