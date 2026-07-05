@@ -101,8 +101,8 @@ feature := client.Feature(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attribute` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
+| `attribute` | `map[string]any` | No |  |
+| `geometry` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -148,10 +148,10 @@ metadata := client.Metadata(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alia` | ``$STRING`` | No |  |
-| `length` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `alia` | `string` | No |  |
+| `length` | `int` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

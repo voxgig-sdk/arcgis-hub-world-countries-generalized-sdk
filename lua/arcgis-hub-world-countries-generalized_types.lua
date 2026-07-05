@@ -11,6 +11,8 @@
 ---@field geometry? table
 
 ---@class FeatureListMatch
+---@field attribute? table
+---@field geometry? table
 
 ---@class Metadata
 ---@field alia? string
@@ -19,6 +21,10 @@
 ---@field type? string
 
 ---@class MetadataListMatch
+---@field alia? string
+---@field length? number
+---@field name? string
+---@field type? string
 
 local M = {}
 

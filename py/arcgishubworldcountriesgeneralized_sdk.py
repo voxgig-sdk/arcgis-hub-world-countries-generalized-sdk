@@ -221,13 +221,13 @@ class ArcgisHubWorldCountriesGeneralizedSDK:
 
 
     def Feature(self, data=None) -> "FeatureEntity":
-        """Entity factory: client.Feature().list({}) / client.Feature().load({"id": ...})."""
+        """Entity factory: client.Feature().list() / client.Feature().load({"id": ...})."""
         from entity.feature_entity import FeatureEntity
         return FeatureEntity(self, data)
 
 
     def Metadata(self, data=None) -> "MetadataEntity":
-        """Entity factory: client.Metadata().list({}) / client.Metadata().load({"id": ...})."""
+        """Entity factory: client.Metadata().list() / client.Metadata().load({"id": ...})."""
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 

@@ -8,7 +8,7 @@ Complete API reference for the ArcgisHubWorldCountriesGeneralized Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'arcgis-hub-world-countries-generalized_sdk'
+require_relative 'ArcgisHubWorldCountriesGeneralized_sdk'
 
 client = ArcgisHubWorldCountriesGeneralizedSDK.new(options)
 ```
@@ -97,17 +97,17 @@ feature = client.Feature
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attribute` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
+| `attribute` | `Hash` | No |  |
+| `geometry` | `Hash` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Feature.list(nil)
+results = client.Feature.list
 ```
 
 ### Common Methods
@@ -150,19 +150,19 @@ metadata = client.Metadata
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alia` | ``$STRING`` | No |  |
-| `length` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `alia` | `String` | No |  |
+| `length` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Metadata.list(nil)
+results = client.Metadata.list
 ```
 
 ### Common Methods

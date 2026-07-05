@@ -8,7 +8,7 @@ Complete API reference for the ArcgisHubWorldCountriesGeneralized PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/arcgis-hub-world-countries-generalized_sdk.php';
+require_once __DIR__ . '/arcgishubworldcountriesgeneralized_sdk.php';
 
 $client = new ArcgisHubWorldCountriesGeneralizedSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `FeatureEntity` instance. Pass `null` for no initial data.
 
 Create a new `MetadataEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ArcgisHubWorldCountriesGeneralizedUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,34 +96,34 @@ $feature = $client->Feature();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attribute` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
+| `attribute` | `array` | No |  |
+| `geometry` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Feature()->list([]);
+$results = $client->Feature()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -132,7 +132,7 @@ Set the entity match criteria.
 Create a new `FeatureEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -149,36 +149,36 @@ $metadata = $client->Metadata();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alia` | ``$STRING`` | No |  |
-| `length` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `alia` | `string` | No |  |
+| `length` | `int` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Metadata()->list([]);
+$results = $client->Metadata()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -187,7 +187,7 @@ Set the entity match criteria.
 Create a new `MetadataEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

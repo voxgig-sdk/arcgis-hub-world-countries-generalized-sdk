@@ -8,7 +8,7 @@ Complete API reference for the ArcgisHubWorldCountriesGeneralized Python SDK.
 ### Constructor
 
 ```python
-from arcgis-hub-world-countries-generalized_sdk import ArcgisHubWorldCountriesGeneralizedSDK
+from arcgishubworldcountriesgeneralized_sdk import ArcgisHubWorldCountriesGeneralizedSDK
 
 client = ArcgisHubWorldCountriesGeneralizedSDK(options)
 ```
@@ -91,17 +91,17 @@ feature = client.Feature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attribute` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
+| `attribute` | `dict` | No |  |
+| `geometry` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Feature().list({})
+results = client.Feature().list()
 for feature in results:
     print(feature)
 ```
@@ -145,19 +145,19 @@ metadata = client.Metadata()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alia` | ``$STRING`` | No |  |
-| `length` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `alia` | `str` | No |  |
+| `length` | `int` | No |  |
+| `name` | `str` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Metadata().list({})
+results = client.Metadata().list()
 for metadata in results:
     print(metadata)
 ```

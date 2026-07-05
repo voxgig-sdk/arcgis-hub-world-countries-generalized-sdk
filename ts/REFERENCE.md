@@ -128,8 +128,8 @@ const feature = client.Feature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `attribute` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
+| `attribute` | `Record<string, any>` | No |  |
+| `geometry` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -179,10 +179,10 @@ const metadata = client.Metadata()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `alia` | ``$STRING`` | No |  |
-| `length` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `alia` | `string` | No |  |
+| `length` | `number` | No |  |
+| `name` | `string` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 

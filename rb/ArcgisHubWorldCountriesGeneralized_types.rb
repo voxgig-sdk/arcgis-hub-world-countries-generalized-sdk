@@ -21,7 +21,7 @@ Feature = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Feature#list (any subset of Feature fields).
+# Request payload for Feature#list.
 #
 # @!attribute [rw] attribute
 #   @return [Hash, nil]
@@ -55,7 +55,7 @@ Metadata = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Metadata#list (any subset of Metadata fields).
+# Request payload for Metadata#list.
 #
 # @!attribute [rw] alia
 #   @return [String, nil]

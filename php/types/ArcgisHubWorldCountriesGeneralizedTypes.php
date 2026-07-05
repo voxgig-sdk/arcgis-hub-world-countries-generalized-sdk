@@ -19,7 +19,7 @@ class Feature
     public ?array $geometry = null;
 }
 
-/** Match filter for Feature#list (any subset of Feature fields). */
+/** Request payload for Feature#list. */
 class FeatureListMatch
 {
     public ?array $attribute = null;
@@ -35,7 +35,7 @@ class Metadata
     public ?string $type = null;
 }
 
-/** Match filter for Metadata#list (any subset of Metadata fields). */
+/** Request payload for Metadata#list. */
 class MetadataListMatch
 {
     public ?string $alia = null;

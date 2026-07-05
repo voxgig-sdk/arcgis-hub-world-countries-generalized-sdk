@@ -10,7 +10,10 @@ export interface Feature {
   geometry?: Record<string, any>
 }
 
-export type FeatureListMatch = Partial<Feature>
+export interface FeatureListMatch {
+  attribute?: Record<string, any>
+  geometry?: Record<string, any>
+}
 
 export interface Metadata {
   alia?: string
@@ -19,5 +22,10 @@ export interface Metadata {
   type?: string
 }
 
-export type MetadataListMatch = Partial<Metadata>
+export interface MetadataListMatch {
+  alia?: string
+  length?: number
+  name?: string
+  type?: string
+}
 

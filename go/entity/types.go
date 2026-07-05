@@ -14,8 +14,7 @@ type Feature struct {
 	Geometry *map[string]any `json:"geometry,omitempty"`
 }
 
-// FeatureListMatch mirrors the feature fields as an all-optional match
-// filter (Go analog of Partial<Feature>).
+// FeatureListMatch is the typed request payload for Feature.ListTyped.
 type FeatureListMatch struct {
 	Attribute *map[string]any `json:"attribute,omitempty"`
 	Geometry *map[string]any `json:"geometry,omitempty"`
@@ -29,8 +28,7 @@ type Metadata struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// MetadataListMatch mirrors the metadata fields as an all-optional match
-// filter (Go analog of Partial<Metadata>).
+// MetadataListMatch is the typed request payload for Metadata.ListTyped.
 type MetadataListMatch struct {
 	Alia *string `json:"alia,omitempty"`
 	Length *int `json:"length,omitempty"`
