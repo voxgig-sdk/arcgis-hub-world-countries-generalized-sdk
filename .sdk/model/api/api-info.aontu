@@ -16,10 +16,10 @@ main: {
           url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer"
         }
       ]
+      summary: "The World Countries Generalized layer provides a simplified representation of global country boundaries, optimized for performance and visibility at broader scales (1:5,000,000 and beyond)."
       termsOfService: "https://www.esri.com/en-us/legal/terms/full-master-agreement"
       title: "ArcGIS Hub - World Countries Generalized"
       version: "1.0.0"
+      website: "https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/about"
     }
   }
-}
-

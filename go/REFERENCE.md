@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 feature := client.Feature(nil)
+fmt.Println(feature.GetName()) // "feature"
 ```
 
 ### Fields
@@ -112,6 +113,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Feature(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -142,6 +147,7 @@ Return the entity name.
 
 ```go
 metadata := client.Metadata(nil)
+fmt.Println(metadata.GetName()) // "metadata"
 ```
 
 ### Fields
@@ -161,6 +167,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Metadata(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

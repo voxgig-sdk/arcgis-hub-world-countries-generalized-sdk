@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -401,15 +398,18 @@
           "url": "https://hub.arcgis.com"
         },
         "description": "The World Countries Generalized layer provides a simplified representation of global country boundaries, optimized for performance and visibility at broader scales (1:5,000,000 and beyond). Developed by Esri using data from Garmin International, the CIA World Factbook, and the National Geographic Society, this layer is updated annually to reflect changes in country names and significant borders. Ideal for applications requiring an authoritative, generalized world basemap.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "ArcGIS Feature Service endpoint",
             "url": "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Countries_Generalized/FeatureServer"
           }
         ],
+        "summary": "The World Countries Generalized layer provides a simplified representation of global country boundaries, optimized for performance and visibility at broader scales (1:5,000,000 and beyond).",
         "termsOfService": "https://www.esri.com/en-us/legal/terms/full-master-agreement",
         "title": "ArcGIS Hub - World Countries Generalized",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://hub.arcgis.com/datasets/2b93b06dc0dc4e809d3c8db5cb96ba69_0/about"
       },
       "option": {},
       "target": {
@@ -462,6 +462,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -512,6 +515,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
