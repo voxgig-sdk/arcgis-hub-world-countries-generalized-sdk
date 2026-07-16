@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewArcgisHubWorldCountriesGeneralizedSDK(nil)
+	// Configure from the environment: ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_APIKEY carries the API key and
+	// ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("ARCGIS_HUB_WORLD_COUNTRIES_GENERALIZED_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewArcgisHubWorldCountriesGeneralizedSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
