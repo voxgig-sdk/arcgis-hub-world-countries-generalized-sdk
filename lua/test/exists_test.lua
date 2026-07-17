@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ArcgisHubWorldCountriesGeneralized SDK exists test
 
 local sdk = require("arcgis-hub-world-countries-generalized_sdk")
 
